@@ -1,0 +1,19 @@
+<div class="container mt-5 p-5 shadow border border-warning rounded">
+
+  <div class="h4 pb-2 mb-4 border-bottom border-warning">
+    {{title}}
+  </div>
+  <form action="/dashboard/addplaylist" method="POST">
+    <div class="field">
+      <label class="label">Name of point of interest</label>
+      <input
+        class="input border border-warning"
+        type="text"
+        placeholder="Enter playlist title"
+        name="title"
+      />
+    </div>
+    <button class="button bg-warning">Add Point</button>
+  </form>
+
+</div>
