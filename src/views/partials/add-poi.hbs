@@ -1,19 +1,73 @@
 <div class="container mt-5 p-5 shadow border border-warning rounded">
 
-  <div class="h4 pb-2 mb-4 border-bottom border-warning">
+  <div class="h4 pb-2 mb-4 border-bottom border-info">
     {{title}}
   </div>
-  <form action="/dashboard/addplaylist" method="POST">
-    <div class="field">
+  <form action="/dashboard/addpoi" method="POST">
+    <div class="field mb-4">
       <label class="label">Name of point of interest</label>
       <input
-        class="input border border-warning"
+        class="input border border-info"
         type="text"
-        placeholder="Enter playlist title"
+        placeholder="eg. Murphy's bar and grill"
         name="title"
       />
     </div>
-    <button class="button bg-warning">Add Point</button>
+    <div class="row mb-4">
+      <div class="col">
+        <label class="label">Latitude</label>
+        <input
+          class="input border border-info"
+          type="text"
+          placeholder="eg. 22674"
+          name="latitude"
+        />
+      </div>
+
+      <div class="col">
+
+        <label class="label">Longitude</label>
+        <input
+          class="input border border-info"
+          type="text"
+          placeholder="eg. -13279"
+          name="longitude"
+        />
+      </div>
+
+    </div>
+    <div class="row mb-4">
+      <div class="col">
+        <label class="label">City</label>
+        <input
+          class="input border border-info"
+          type="text"
+          placeholder="eg. Dublin"
+          name="city"
+        />
+      </div>
+      <div class="col">
+        <label class="label">Country</label>
+        <input
+          class="input border border-info"
+          type="text"
+          placeholder="eg. Ireland"
+          name="country"
+        />
+      </div>
+    </div>
+    <div class="field mb-4">
+      <label class="label">Description</label>
+      <textarea
+        class="form-control border border-info"
+        name="description"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button class="button mt-4 bg-warning">Add Point</button>
+    </div>
+
   </form>
 
 </div>

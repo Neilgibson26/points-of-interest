@@ -7,6 +7,10 @@ export const poiMemStore = {
     return pointsOfInterest;
   },
 
+  async getAllUserPoi() {
+    return pointsOfInterest;
+  },
+
   async addPoi(poi) {
     poi._id = v4();
     pointsOfInterest.push(poi);
