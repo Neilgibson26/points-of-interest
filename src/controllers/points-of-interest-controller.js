@@ -9,6 +9,7 @@ export const poiController = {
 
   addPoi: {
     handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
       const newPoi = {
         title: request.payload.title,
         latitude: request.payload.latitude,
@@ -16,6 +17,7 @@ export const poiController = {
         city: request.payload.city,
         country: request.payload.country,
         description: request.payload.description,
+        user_id: loggedInUser._id,
         // uid: currentUser._id,
       };
       console.log(newPoi);

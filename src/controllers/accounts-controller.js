@@ -3,12 +3,14 @@ import { currentUser } from "../Consts/index.js";
 
 export const accountsController = {
   showSignup: {
+    auth: false,
     handler: async function (request, h) {
       return h.view("signup-view");
     },
   },
 
   register: {
+    auth: false,
     handler: async function (request, h) {
       const user = request.payload;
       console.log("This is user\n", user);
@@ -18,12 +20,14 @@ export const accountsController = {
   },
 
   showLogin: {
+    auth: false,
     handler: async function (request, h) {
       return h.view("login-view");
     },
   },
 
   login: {
+    auth: false,
     handler: async function (request, h) {
       const { email, password } = request.payload;
       console.log("email: ", email);
@@ -31,12 +35,25 @@ export const accountsController = {
       console.log(user.password);
       if (!user || user.password !== password) {
         return h.redirect("/");
-      } else {
-        await function () {
-          currentUser = user._id;
-        };
-        return h.redirect("/dashboard");
       }
+      request.cookieAuth.set({ id: user._id });
+      return h.redirect("/dashboard");
     },
+  },
+
+  logout: {
+    auth: false,
+    handler: async function (request, h) {
+      request.cookieAuth.clear();
+      return h.redirect("/");
+    },
+  },
+
+  async validate(request, session) {
+    const user = await db.userStore.getUserById(session.id);
+    if (!user) {
+      return { valid: false };
+    }
+    return { valid: true, credentials: user };
   },
 };

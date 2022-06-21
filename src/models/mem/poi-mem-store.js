@@ -14,6 +14,7 @@ export const poiMemStore = {
   async addPoi(poi) {
     poi._id = v4();
     pointsOfInterest.push(poi);
+
     return poi;
   },
 

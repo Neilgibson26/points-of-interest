@@ -1,9 +1,18 @@
 <div class="container mt-5 p-5 shadow border border-warning rounded">
 
   <div class="h4 pb-2 mb-4 border-bottom border-info">
-    {{title}}
+
   </div>
   <form action="/dashboard/addpoi" method="POST">
+    <div class="field mb-4">
+      <label class="label">Category</label>
+      <select class="form-control border border-info" name="category">
+        <option>Pub</option>
+        <option>Restaurant</option>
+        <option>Nightclub</option>
+        <option>Cocktail Bar</option>
+      </select>
+    </div>
     <div class="field mb-4">
       <label class="label">Name of point of interest</label>
       <input

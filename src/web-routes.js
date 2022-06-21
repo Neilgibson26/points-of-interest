@@ -5,6 +5,7 @@ import { accountsController } from "./controllers/accounts-controller.js";
 export const webRoutes = [
   { method: "GET", path: "/", config: dashboardController.main },
   { method: "GET", path: "/login", config: accountsController.showLogin },
+  { method: "GET", path: "/logout", config: accountsController.logout },
   {
     method: "POST",
     path: "/authenticate",

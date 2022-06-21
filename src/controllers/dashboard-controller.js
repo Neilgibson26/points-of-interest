@@ -8,8 +8,10 @@ function setCurrentUser(user) {
 export const dashboardController = {
   index: {
     handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
       const allPoi = await db.poiStore.getAllPoi();
       const data = {
+        user: loggedInUser,
         pointsOfInterest: allPoi,
       };
 
@@ -17,11 +19,13 @@ export const dashboardController = {
     },
   },
   main: {
+    auth: false,
     handler: async function (request, h) {
       return h.view("main");
     },
   },
   showAbout: {
+    auth: false,
     handler: async function (request, h) {
       return h.view("about-view");
     },
