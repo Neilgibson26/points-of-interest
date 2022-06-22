@@ -17,8 +17,8 @@ export const poiController = {
         city: request.payload.city,
         country: request.payload.country,
         description: request.payload.description,
+        category: request.payload.category,
         user_id: loggedInUser._id,
-        // uid: currentUser._id,
       };
       console.log(newPoi);
       await db.poiStore.addPoi(newPoi);

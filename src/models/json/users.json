@@ -1,18 +1,32 @@
 {
   "users": [
     {
-      "firstName": "n",
-      "lastName": "n",
-      "email": "n@gmail.com",
-      "password": "n",
-      "_id": "0ed4bd8b-11b9-4d1e-a14c-15916632d64d"
+      "firstName": "Neil",
+      "lastName": "Gibson",
+      "email": "1neilgibson1@gmail.com",
+      "password": "neil123",
+      "_id": "0470b454-bd00-4240-ac4c-0fa467cdc637"
     },
     {
-      "firstName": "daryl",
-      "lastName": "boylan",
-      "email": "daryl@gmail.com",
-      "password": "daryl",
-      "_id": "1aeee04d-1e61-4dd5-b1bc-21f98ea740e4"
+      "firstName": "James",
+      "lastName": "Sweeney",
+      "email": "js@gmail.com",
+      "passord": "jimmy",
+      "_id": "fc29960e-9d7e-40e6-9328-12c39284219a"
+    },
+    {
+      "firstName": "Jordan",
+      "lastName": "Quinn",
+      "email": "jordyQ@gmail.com",
+      "password": "Theo",
+      "_id": "d5cdec1d-3faa-436e-9729-4c5bcdb10ebc"
+    },
+    {
+      "firstName": "neil",
+      "lastName": "gibson",
+      "email": "neil@gmail.com",
+      "password": "neil",
+      "_id": "b3bdc06d-0b1f-4fe7-8a5d-b742a1d42f98"
     }
   ]
 }

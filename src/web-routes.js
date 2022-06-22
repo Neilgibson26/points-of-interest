@@ -17,4 +17,5 @@ export const webRoutes = [
   { method: "GET", path: "/about", config: dashboardController.showAbout },
   { method: "GET", path: "/create", config: poiController.showCreate },
   { method: "POST", path: "/dashboard/addpoi", config: poiController.addPoi },
+  { method: "GET", path: "/admin", config: dashboardController.showAdmin },
 ];

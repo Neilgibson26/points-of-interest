@@ -1,5 +1,4 @@
 import { db } from "../models/db.js";
-import { currentUser } from "../Consts/index.js";
 
 function setCurrentUser(user) {
   currentUser = user;
@@ -18,16 +17,25 @@ export const dashboardController = {
       return h.view("dashboard-view", data);
     },
   },
+
   main: {
     auth: false,
     handler: async function (request, h) {
       return h.view("main");
     },
   },
+
   showAbout: {
     auth: false,
     handler: async function (request, h) {
       return h.view("about-view");
+    },
+  },
+
+  showAdmin: {
+    auth: false,
+    handler: async function (request, h) {
+      return h.view("admin-view");
     },
   },
 };

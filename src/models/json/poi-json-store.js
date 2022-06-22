@@ -20,13 +20,15 @@ export const poiJsonStore = {
 
   async getPoiById(id) {
     await db.read();
-    return db.data.pointsOfInterest.find((poi) => poi._id === id);
+    let u = db.data.pointsOfInterest.find((poi) => poi._id === id);
+    if (u === undefined) u = null;
+    return u;
   },
 
   async deletePoiById(id) {
     await db.read();
     const index = db.data.pointsOfInterest.findIndex((poi) => poi._id === id);
-    db.data.pointsOfInterest.splice(index, 1);
+    if (index !== -1) db.data.pointsOfInterest.splice(index, 1);
     await db.write();
   },
 

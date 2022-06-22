@@ -5,15 +5,18 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "test": "./node_modules/mocha/bin/mocha --ui tdd test/**.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.3.6",
     "eslint": "^8.4.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
+    "mocha": "^10.0.0",
     "prettier": "^2.5.1"
   },
   "dependencies": {

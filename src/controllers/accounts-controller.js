@@ -1,5 +1,4 @@
 import { db } from "../models/db.js";
-import { currentUser } from "../Consts/index.js";
 import { userSpec } from "../models/joi-schema.js";
 import Joi from "joi";
 
