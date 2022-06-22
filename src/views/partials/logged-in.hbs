@@ -17,6 +17,15 @@
   </div>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mx-50">
+      {{#if user.isAdmin}}
+        <li class="nav-item mx-3">
+          <button
+            type="button"
+            class="btn btn-secondary home"
+            onclick="goAdmin()"
+          >Admin</button>
+        </li>
+      {{/if}}
       <li class="nav-item mx-3">
         <button
           type="button"
@@ -61,5 +70,5 @@
 <script>
   function logOut() { window.location.href = "/logout"; } function showAbout()
   {window.location.href = "/about"; } function goHome() {window.location.href =
-  "/dashboard"; }
+  "/dashboard"; } function goAdmin() { window.location.href = "/admin";}
 </script>

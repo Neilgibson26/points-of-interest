@@ -1,13 +1,11 @@
 import { db } from "../models/db.js";
-
-function setCurrentUser(user) {
-  currentUser = user;
-}
+import { userSpec } from "../models/joi-schema.js";
 
 export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
+      console.log("logged in user is: ", loggedInUser);
       const allPoi = await db.poiStore.getAllPoi();
       const data = {
         user: loggedInUser,
@@ -26,16 +24,24 @@ export const dashboardController = {
   },
 
   showAbout: {
-    auth: false,
     handler: async function (request, h) {
-      return h.view("about-view");
+      const loggedInUser = request.auth.credentials;
+      const data = {
+        user: loggedInUser,
+      };
+      return h.view("about-view", data);
     },
   },
 
   showAdmin: {
-    auth: false,
     handler: async function (request, h) {
-      return h.view("admin-view");
+      const allUsers = await db.userStore.getAllUsers();
+      const loggedInUser = request.auth.credentials;
+      const data = {
+        users: allUsers,
+        user: loggedInUser,
+      };
+      return h.view("admin-view", data);
     },
   },
 };

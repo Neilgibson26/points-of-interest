@@ -3,14 +3,16 @@ export const neil = {
   lastName: "Gibson",
   email: "1neilgibson1@gmail.com",
   password: "neil123",
+  isAdmin: true,
 };
 
 export const testUsers = [
   {
-    firstName: "Neil",
+    firstName: "Niamh",
     lastName: "Gibson",
-    email: "1neilgibson1@gmail.com",
-    password: "neil123",
+    email: "niamho@gmail.com",
+    password: "niamh",
+    isAdmin: false,
   },
 
   {
@@ -18,6 +20,7 @@ export const testUsers = [
     lastName: "Sweeney",
     email: "js@gmail.com",
     passord: "jimmy",
+    isAdmin: false,
   },
 
   {
@@ -25,6 +28,7 @@ export const testUsers = [
     lastName: "Quinn",
     email: "jordyQ@gmail.com",
     password: "Theo",
+    isAdmin: false,
   },
 ];
 
@@ -36,6 +40,7 @@ export const isabelles = {
   country: "Ireland",
   description: "Italian",
   category: "Restaurant",
+  uid: "d44de84c-8fc7-4eb2-b541-37c5e695edea",
 };
 
 export const testPoints = [
@@ -47,6 +52,7 @@ export const testPoints = [
     country: "Ireland",
     description: "Brazillian",
     category: "Nightclub",
+    uid: "d44de84c-8fc7-4eb2-b541-37c5e695edea",
   },
   {
     title: "Wishbone",
@@ -56,6 +62,7 @@ export const testPoints = [
     country: "Ireland",
     description: "American",
     category: "Restaurant",
+    uid: "d44de84c-8fc7-4eb2-b541-37c5e695edea",
   },
   {
     title: "Fabric",
@@ -65,5 +72,6 @@ export const testPoints = [
     country: "England",
     description: "Brittish",
     category: "Nightclub",
+    uid: "d44de84c-8fc7-4eb2-b541-37c5e695edea",
   },
 ];
