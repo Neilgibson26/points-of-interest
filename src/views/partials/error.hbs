@@ -1,0 +1,12 @@
+{{#if errors}}
+  <div class="container border shadow border-info bg-white p-3 mt-5">
+    <p>There seems to be a problem :(</p>
+    <ul class="list-group list-group-flush">
+      {{#each errors}}
+        <li class="list-group-item">
+          {{message}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}

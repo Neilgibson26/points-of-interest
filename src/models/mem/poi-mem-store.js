@@ -7,9 +7,9 @@ export const poiMemStore = {
     return pointsOfInterest;
   },
 
-  async getAllUserPoi() {
-    return pointsOfInterest;
-  },
+  // async getAllUserPoi() {
+  //   return pointsOfInterest;
+  // },
 
   async addPoi(poi) {
     poi._id = v4();
@@ -19,7 +19,7 @@ export const poiMemStore = {
   },
 
   async getPoiById(id) {
-    return pointsOfInterest.find((poi) => poi.id === id);
+    return pointsOfInterest.find((poi) => poi._id === id);
   },
 
   async deletePoiById(id) {

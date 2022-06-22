@@ -1,5 +1,7 @@
 import { db } from "../models/db.js";
 import { currentUser } from "../Consts/index.js";
+import { userSpec } from "../models/joi-schema.js";
+import Joi from "joi";
 
 export const accountsController = {
   showSignup: {
@@ -11,11 +13,24 @@ export const accountsController = {
 
   register: {
     auth: false,
+    // validate: {
+    //   payload: userSpec,
+    //   options: { abortEarly: false },
+    //   failAction: function (request, h, error) {
+    //     return h
+    //       .view("signup-view", {
+    //         title: "Sign-up error",
+    //         errors: error.details,
+    //       })
+    //       .takeover()
+    //       .code(400);
+    //   },
+    // },
     handler: async function (request, h) {
       const user = request.payload;
       console.log("This is user\n", user);
       await db.userStore.addUser(user);
-      return h.redirect("/");
+      return h.redirect("/login");
     },
   },
 
@@ -32,7 +47,7 @@ export const accountsController = {
       const { email, password } = request.payload;
       console.log("email: ", email);
       const user = await db.userStore.getUserByEmail(email);
-      console.log(user.password);
+      console.log("password: ", password);
       if (!user || user.password !== password) {
         return h.redirect("/");
       }

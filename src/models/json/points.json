@@ -1,0 +1,14 @@
+{
+  "pointsOfInterest": [
+    {
+      "title": "Isabelles",
+      "latitude": "2345",
+      "longitude": "1984",
+      "city": "Dublin",
+      "country": "Ireland",
+      "description": "Phasellus urna elit, viverra quis egestas et, bibendum ut orci. Vestibulum maximus dolor felis. Duis porta egestas rhoncus. Praesent a leo leo. Nullam vitae nisi egestas, facilisis ex vitae, pharetra mi. Phasellus consequat metus augue, elementum consequat est maximus in. Nam ut enim a nisi scelerisque vestibulum semper vel est. Curabitur condimentum justo eu nisl iaculis, non rutrum mauris ultrices. Integer eget commodo lorem. Nullam auctor libero vel tellus tincidunt consequat sodales et urna. Cras ac turpis non enim viverra vestibulum at eu est. Nulla vitae dictum lacus, ac finibus est. Suspendisse varius arcu dignissim, pulvinar metus iaculis, accumsan purus. Vivamus id est vehicula, varius nulla at, malesuada lectus. Sed eget risus odio.",
+      "user_id": "0ed4bd8b-11b9-4d1e-a14c-15916632d64d",
+      "_id": "adfc0a3e-dead-4927-b087-5ba1738a8895"
+    }
+  ]
+}
