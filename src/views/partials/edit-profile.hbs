@@ -1,0 +1,32 @@
+<div class="container m-20" style="margin-top: 30;">
+    <form action="/edit/yes/{{userToBeEdited._id}}" method="POST">
+        <div class="row">
+            <div class="col">
+                <label for="exampleInputEmail1" class="form-label" style="margin: 20px 0">Last Name</label>
+                <input type="text" class="form-control" placeholder="eg. John" value="{{userToBeEdited.firstName}}" aria-label="First name" name="firstName">
+            </div>
+            <div class="col">
+                <label class="form-label" style="margin: 20px 0">Last Name</label>
+                <input type="text" class="form-control" placeholder="eg. Doe" value="{{userToBeEdited.lastName}}"aria-label="Last name" name="lastName">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label" style="margin: 20px 0">Email address</label>
+            <input type="email" value="{{userToBeEdited.email}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="example@gmail.com">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="password" value="{{userToBeEdited.password}}">
+        </div>
+                <div class="field mb-4">
+        <label class="form-label">Type of Account</label>
+        <div class="mb-3">
+            <select class="form-control border border-info" name="accountType">
+                <option selected>{{userToBeEdited.accountType}}</option>
+                <option>User</option>
+                <option>Admin</option>
+             </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit</button>
+    </form>
+</div>

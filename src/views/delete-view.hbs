@@ -1,0 +1,14 @@
+{{> logged-in}}
+
+<div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+    <div class="d-flex flex-column justify-content-center align-items-center shadow border border-info bg-white p-5" style="height: 350px;">
+        <h3>
+    
+    <small class="text-muted">Are you sure you would like to delete {{user.firstName}} {{user.lastName}}</small>
+    </h3>
+    <div class="row">
+        <div class="col"><a href="/delete/yes/{{user._id}}" class="btn btn-primary" style="width: 80px;">Yes</a></div>
+        <div class="col"><a href="/admin{{_id}}" class="btn btn-primary" style="width: 80px;">No</a></div>
+    </div>
+    </div>
+</div>

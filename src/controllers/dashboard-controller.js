@@ -5,7 +5,7 @@ export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      console.log("logged in user is: ", loggedInUser);
+
       const allPoi = await db.poiStore.getAllPoi();
       const data = {
         user: loggedInUser,

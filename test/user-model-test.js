@@ -1,10 +1,11 @@
 import { assert } from "chai";
 import { db } from "../src/models/db.js";
 import { testUsers, neil } from "./dummy-data.js";
+import { assertSubset } from "./test-utils.js";
 
 suite("user api tests", () => {
   setup(async () => {
-    db.init();
+    db.init("mongo");
     await db.userStore.deleteAll();
     for (let i = 0; i < testUsers.length; i += 1) {
       await db.userStore.addUser(testUsers[i]);
@@ -13,7 +14,7 @@ suite("user api tests", () => {
 
   test("create user", async () => {
     const newUser = await db.userStore.addUser(neil);
-    assert.deepEqual(neil, newUser);
+    assertSubset(neil, newUser);
   });
 
   test("delete all users and get all users", async () => {
@@ -27,11 +28,11 @@ suite("user api tests", () => {
   test("get user -- success", async () => {
     let user = testUsers[2];
     let userWithId = await db.userStore.getUserById(user._id);
-    assert.equal(userWithId.firstName, "Jordan");
+    assertSubset(userWithId, user);
     let userWithEmail = await db.userStore.getUserByEmail(
       "1neilgibson1@gmail.com"
     );
-    assert.equal(userWithEmail.firstName, "Neil");
+    assertSubset(userWithEmail, neil);
   });
   test("delete user by id", async () => {
     let allUsers = await db.userStore.getAllUsers();

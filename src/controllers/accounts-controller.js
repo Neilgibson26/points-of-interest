@@ -12,10 +12,8 @@ export const accountsController = {
 
   register: {
     auth: false,
-
     handler: async function (request, h) {
       const user = request.payload;
-      console.log("This is user\n", user);
       if (user.accountType === "Admin") {
         user.isAdmin = true;
       } else {

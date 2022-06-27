@@ -1,10 +1,11 @@
 import { assert } from "chai";
 import { db } from "../src/models/db.js";
 import { isabelles, testPoints } from "./dummy-data.js";
+import { assertSubset } from "./test-utils.js";
 
-suite("user api tests", () => {
+suite("poi api tests", () => {
   setup(async () => {
-    db.init();
+    db.init("mongo");
     await db.poiStore.deleteAll();
     for (let i = 0; i < testPoints.length; i++) {
       await db.poiStore.addPoi(testPoints[i]);
@@ -13,12 +14,12 @@ suite("user api tests", () => {
 
   test("Create a poi - success", async () => {
     const newPoi = await db.poiStore.addPoi(isabelles);
-    assert.equal(newPoi, isabelles);
+    assertSubset(newPoi, isabelles);
   });
 
   test("Get a poi - success", async () => {
     const poiById = await db.poiStore.getPoiById(testPoints[0]._id);
-    assert.equal(poiById.title, testPoints[0].title);
+    assertSubset(poiById, testPoints[0]);
   });
 
   test("get a poi - bad params", async () => {
@@ -40,7 +41,7 @@ suite("user api tests", () => {
     db.poiStore.deleteAll();
   });
 
-  test("delete user by id", async () => {
+  test("delete poi by id", async () => {
     let allPoints = await db.poiStore.getAllPoi();
     assert.equal(allPoints.length, 3);
     await db.poiStore.deletePoiById(allPoints[0]._id);

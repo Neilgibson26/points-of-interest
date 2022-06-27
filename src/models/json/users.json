@@ -1,14 +1,13 @@
 {
   "users": [
-
     {
-      "firstName": "Colette",
-      "lastName": "Gibson",
+      "firstName": "colette",
+      "lastName": "gibson",
       "email": "col@gmail.com",
-      "password": "colette",
+      "password": "c",
       "accountType": "Admin",
       "isAdmin": true,
-      "_id": "d44de84c-8fc7-4eb2-b541-37c5e695edea"
+      "_id": "ab795c86-113a-4fec-97c0-2ae779ad5d23"
     }
   ]
 }

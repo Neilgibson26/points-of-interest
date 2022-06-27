@@ -25,6 +25,16 @@ export const userJsonStore = {
     return u;
   },
 
+  async editExistingUser(user) {
+    await db.read();
+    for (let i = 0; i < db.data.length; i++) {
+      if (users[i]._id === user._id) {
+        users[i] = user;
+      }
+    }
+    await db.write();
+  },
+
   async getUserByEmail(email) {
     await db.read();
     let u = db.data.users.find((user) => user.email === email);

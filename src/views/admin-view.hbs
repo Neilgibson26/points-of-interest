@@ -21,11 +21,17 @@
         <td>{{lastName}}</td>
         <td>{{email}}</td>
         <td>{{password}}</td>
-        <td><div class="btn btn-outline-primary" style="width: 80px;">Edit</div></td>
-        <td><div class="btn btn-outline-primary" style="width: 80px;">Delete</div></td>
+        <td><a href="/edit/{{_id}}" class="btn btn-outline-primary" style="width: 80px;">Edit</a></td>
+        <td><a href="/delete/{{_id}}" class="btn btn-outline-primary" style="width: 80px;">Delete</a></td>
         </tr>
 
         {{/each}}
     </tbody>
     </table>
 </div>
+
+<script>
+    function editProfile() {
+        window.location.href("/admin/{{_id}}");
+    }
+</script>
