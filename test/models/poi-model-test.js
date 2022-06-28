@@ -1,7 +1,7 @@
 import { assert } from "chai";
-import { db } from "../src/models/db.js";
-import { isabelles, testPoints } from "./dummy-data.js";
-import { assertSubset } from "./test-utils.js";
+import { db } from "../../src/models/db.js";
+import { isabelles, testPoints } from "../dummy-data.js";
+import { assertSubset } from "../test-utils.js";
 
 suite("poi api tests", () => {
   setup(async () => {

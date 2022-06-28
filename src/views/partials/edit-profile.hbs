@@ -22,10 +22,17 @@
         <label class="form-label">Type of Account</label>
         <div class="mb-3">
             <select class="form-control border border-info" name="accountType">
-                <option selected>{{userToBeEdited.accountType}}</option>
+
+            {{#if userToBeEdited.isAdmin}}
+                <option>Admin</option>
+                <option>User</option>
+             </select>
+             {{else}}
                 <option>User</option>
                 <option>Admin</option>
+            {{/if}}
              </select>
+
         </div>
         <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit</button>
     </form>

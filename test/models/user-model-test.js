@@ -1,7 +1,7 @@
 import { assert } from "chai";
-import { db } from "../src/models/db.js";
-import { testUsers, neil } from "./dummy-data.js";
-import { assertSubset } from "./test-utils.js";
+import { db } from "../../src/models/db.js";
+import { testUsers, neil } from "../dummy-data.js";
+import { assertSubset } from "../test-utils.js";
 
 suite("user api tests", () => {
   setup(async () => {

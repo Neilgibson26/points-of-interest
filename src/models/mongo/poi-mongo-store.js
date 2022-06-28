@@ -31,4 +31,11 @@ export const poiMongoStore = {
   async deleteAll() {
     await Poi.deleteMany({});
   },
+
+  async updatePoi(poi, updatedPoi) {
+    let doc = await Poi.findOneAndUpdate({ _id: poi._id }, updatedUser, {
+      new: true,
+    });
+    console.log("This is doc: ", doc);
+  },
 };

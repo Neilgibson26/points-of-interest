@@ -36,4 +36,11 @@ export const userMongoStore = {
   async deleteAll() {
     await User.deleteMany({});
   },
+
+  async updateUser(oldUser, updatedUser) {
+    let doc = await User.findOneAndUpdate({ _id: oldUser._id }, updatedUser, {
+      new: true,
+    });
+    console.log("This is doc: ", doc);
+  },
 };

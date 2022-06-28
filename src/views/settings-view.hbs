@@ -1,0 +1,9 @@
+{{> logged-in}}
+<div class="container">
+    <div class="d-grid gap-2" >
+        <div class="col mt-5"><a href="/profile" class="btn btn-primary" style="width: 100%;">View profile</a></div>
+        <div class="col mt-2"><a href="/edit/{{user._id}}" class="btn btn-primary" style="width: 100%;">Edit my profile</a></div>
+        <div class="col mt-2"><a href="/delete/yes/{{user._id}}" class="btn btn-primary" style="width: 100%;">Delete my profile</a></div>
+    </div>
+</div>
+

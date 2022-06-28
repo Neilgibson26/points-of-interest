@@ -3,6 +3,7 @@ export const neil = {
   lastName: "Gibson",
   email: "1neilgibson1@gmail.com",
   password: "neil123",
+  accountType: "Admin",
   isAdmin: true,
 };
 
@@ -12,6 +13,7 @@ export const testUsers = [
     lastName: "Gibson",
     email: "niamho@gmail.com",
     password: "niamh",
+    accountType: "User",
     isAdmin: false,
   },
 
@@ -20,6 +22,7 @@ export const testUsers = [
     lastName: "Sweeney",
     email: "js@gmail.com",
     passord: "jimmy",
+    accountType: "User",
     isAdmin: false,
   },
 
@@ -28,6 +31,7 @@ export const testUsers = [
     lastName: "Quinn",
     email: "jordyQ@gmail.com",
     password: "Theo",
+    accountType: "User",
     isAdmin: false,
   },
 ];

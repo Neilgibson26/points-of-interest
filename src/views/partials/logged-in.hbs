@@ -17,6 +17,13 @@
   </div>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mx-50">
+      <li class="nav-item mx-3">
+        <button
+          type="button"
+          class="btn btn-secondary home"
+          onclick="goHome()"
+        >Home</button>
+      </li>
       {{#if user.isAdmin}}
         <li class="nav-item mx-3">
           <button
@@ -29,16 +36,9 @@
       <li class="nav-item mx-3">
         <button
           type="button"
-          class="btn btn-secondary home"
-          onclick="goHome()"
-        >Home</button>
-      </li>
-      <li class="nav-item mx-3">
-        <button
-          type="button"
           class="btn btn-secondary logIn"
-          onclick="showAbout()"
-        >About</button>
+          onclick="showSettings()"
+        >Settings</button>
       </li>
       <li class="nav-item mx-3">
         <button
@@ -68,7 +68,8 @@
 </nav>
 
 <script>
-  function logOut() { window.location.href = "/logout"; } function showAbout()
-  {window.location.href = "/about"; } function goHome() {window.location.href =
-  "/dashboard"; } function goAdmin() { window.location.href = "/admin";}
+  function logOut() { window.location.href = "/logout"; } function
+  showSettings() {window.location.href = "/settings"; } function goHome()
+  {window.location.href = "/dashboard"; } function goAdmin() {
+  window.location.href = "/admin";}
 </script>

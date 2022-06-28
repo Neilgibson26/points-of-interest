@@ -4,30 +4,29 @@ export const adminController = {
   showEdit: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
+
       const clickedUser = await db.userStore.getUserById(request.params.id);
       console.log(clickedUser);
       const data = {
         user: loggedInUser,
         userToBeEdited: clickedUser,
       };
-      console.log("Check here in object: ", data.userToBeEdited);
       return h.view("edit-view", data);
     },
   },
 
   editProfile: {
     handler: async function (request, h) {
-      const editedUser = request.payload;
-      editedUser._id = request.params.id;
-      if (editedUser.accountType === "Admin") {
-        editedUser.isAdmin = true;
-      } else {
-        editedUser.isAdmin = false;
-      }
-      await db.userStore.editExistingUser(editedUser);
-      console.log("This is user from editing the profile", editedUser);
+      const updatedUser = request.payload;
+      const oldUser = request.auth.credentials;
+      updatedUser._id = oldUser._id;
 
-      console.log(await db.userStore.getUserById(editedUser._id));
+      if (updatedUser.accountType === "Admin") {
+        updatedUser.isAdmin = true;
+      } else {
+        updatedUser.isAdmin = false;
+      }
+      await db.userStore.updateUser(oldUser, updatedUser);
       return h.redirect("/admin");
     },
   },

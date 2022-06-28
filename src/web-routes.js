@@ -15,7 +15,12 @@ export const webRoutes = [
   { method: "GET", path: "/signup", config: accountsController.showSignup },
   { method: "POST", path: "/register", config: accountsController.register },
   { method: "GET", path: "/dashboard", config: dashboardController.index },
-  { method: "GET", path: "/about", config: dashboardController.showAbout },
+  // { method: "GET", path: "/about", config: dashboardController.showAbout },
+  {
+    method: "GET",
+    path: "/settings",
+    config: dashboardController.showSettings,
+  },
   { method: "GET", path: "/create", config: poiController.showCreate },
   { method: "POST", path: "/dashboard/addpoi", config: poiController.addPoi },
   { method: "GET", path: "/admin", config: dashboardController.showAdmin },
@@ -35,5 +40,10 @@ export const webRoutes = [
     method: "GET",
     path: "/delete/yes/{id}",
     config: adminController.deleteProfile,
+  },
+  {
+    method: "GET",
+    path: "/profile",
+    config: dashboardController.showProfile,
   },
 ];

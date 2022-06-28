@@ -7,6 +7,7 @@ export const dashboardController = {
       const loggedInUser = request.auth.credentials;
 
       const allPoi = await db.poiStore.getAllPoi();
+      console.log("all poi is: ", allPoi);
       const data = {
         user: loggedInUser,
         pointsOfInterest: allPoi,
@@ -23,13 +24,33 @@ export const dashboardController = {
     },
   },
 
-  showAbout: {
+  // showAbout: {
+  //   handler: async function (request, h) {
+  //     const loggedInUser = request.auth.credentials;
+  //     const data = {
+  //       user: loggedInUser,
+  //     };
+  //     return h.view("about-view", data);
+  //   },
+  // },
+
+  showSettings: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const data = {
         user: loggedInUser,
       };
-      return h.view("about-view", data);
+      return h.view("settings-view", data);
+    },
+  },
+
+  showProfile: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const data = {
+        user: loggedInUser,
+      };
+      return h.view("profile-view", data);
     },
   },
 
