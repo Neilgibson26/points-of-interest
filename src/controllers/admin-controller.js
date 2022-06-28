@@ -18,16 +18,9 @@ export const adminController = {
   editProfile: {
     handler: async function (request, h) {
       const updatedUser = request.payload;
-      const oldUser = request.auth.credentials;
-      updatedUser._id = oldUser._id;
-
-      if (updatedUser.accountType === "Admin") {
-        updatedUser.isAdmin = true;
-      } else {
-        updatedUser.isAdmin = false;
-      }
+      const oldUser = await db.userStore.getUserById(request.params.id);
       await db.userStore.updateUser(oldUser, updatedUser);
-      return h.redirect("/admin");
+      return h.redirect("/dashboard");
     },
   },
 
