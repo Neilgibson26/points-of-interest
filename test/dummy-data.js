@@ -9,6 +9,11 @@ export const neil = {
   isAdmin: true,
 };
 
+export const neilCredentials = {
+  email: "1neilgibson1@gmail.com",
+  password: "neil123",
+};
+
 export const testUsers = [
   {
     firstName: "Niamh",

@@ -11,4 +11,9 @@ export const apiRoutes = [
   { method: "GET", path: "/api/poi", config: poiApi.find },
   { method: "GET", path: "/api/poi/{id}", config: poiApi.findOne },
   { method: "DELETE", path: "/api/poi/{id}", config: poiApi.deleteOne },
+  {
+    method: "POST",
+    path: "/api/users/authenticate",
+    config: userApi.authenticate,
+  },
 ];

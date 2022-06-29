@@ -48,3 +48,12 @@ export const poiSpec = Joi.object()
   .label("Poi details");
 
 export const poiArray = Joi.array().items(poiSpec).label("poiArray");
+
+export const JwtAuth = Joi.object()
+  .keys({
+    success: Joi.boolean().example("true").required(),
+    token: Joi.string()
+      .example("eyJhbGciOiJND.g5YmJisIjoiaGYwNTNjAOhE.gCWGmY5-YigQw0DCBo")
+      .required(),
+  })
+  .label("JwtAuth");
