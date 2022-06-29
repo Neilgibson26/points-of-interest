@@ -10,11 +10,6 @@ export const db = {
   userStore: null,
   poiStore: null,
 
-  // init() {
-  //   this.userStore = userJsonStore;
-  //   this.poiStore = poiJsonStore;
-  // },
-
   init(storeType) {
     switch (storeType) {
       case "mem":

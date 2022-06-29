@@ -6,9 +6,29 @@ import Handlebars from "handlebars";
 import path from "path";
 import { fileURLToPath } from "url";
 import { webRoutes } from "./web-routes.js";
+import { apiRoutes } from "./api-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import dotenv from "dotenv";
+import Inert from "@hapi/inert";
+import HapiSwagger from "hapi-swagger";
+import jwt from "hapi-auth-jwt2";
+import { validate } from "./api/jwt-utils.js";
+
+const swaggerOptions = {
+  info: {
+    title: "Point of interest API",
+    version: "1.0.1",
+  },
+  securityDefinitions: {
+    jwt: {
+      type: "apiKey",
+      name: "Authorization",
+      in: "header",
+    },
+  },
+  security: [{ jwt: [] }],
+};
 
 const result = dotenv.config();
 if (result.error) {
@@ -26,15 +46,23 @@ async function init() {
   });
   await server.register(Vision);
   await server.register(Cookie);
+  await server.register(jwt);
   await server.validator(Joi);
+
   server.auth.strategy("session", "cookie", {
     cookie: {
       name: process.env.cookie_name,
       password: process.env.cookie_password,
       isSecure: false,
     },
+
     redirectTo: "/",
     validateFunc: accountsController.validate,
+  });
+  server.auth.strategy("jwt", "jwt", {
+    key: process.env.cookie_password,
+    validate: validate,
+    verifyOptions: { algorithms: ["HS256"] },
   });
   server.auth.default("session");
   server.views({
@@ -48,8 +76,18 @@ async function init() {
     layout: true,
     isCached: false,
   });
+  await server.register(Inert);
+  await server.register([
+    Inert,
+    Vision,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
   db.init("mongo");
   server.route(webRoutes);
+  server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
 }

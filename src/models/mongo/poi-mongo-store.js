@@ -36,6 +36,5 @@ export const poiMongoStore = {
     let doc = await Poi.findOneAndUpdate({ _id: poi._id }, updatedUser, {
       new: true,
     });
-    console.log("This is doc: ", doc);
   },
 };
