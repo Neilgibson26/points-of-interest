@@ -1,5 +1,12 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
+import {
+  IdSpec,
+  userArray,
+  userSpec,
+  userSpecPlus,
+} from "../models/joi-schema.js";
+import { validationError } from "./logger.js";
 
 export const userApi = {
   create: {
@@ -16,6 +23,11 @@ export const userApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Create a User",
+    notes: "Returns the newly created user",
+    validate: { payload: userSpec, failAction: validationError },
+    response: { schema: userSpecPlus, failAction: validationError },
   },
 
   find: {
@@ -28,13 +40,20 @@ export const userApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Get all userApi",
+    notes: "Returns details of all userApi",
+    response: { schema: userArray, failAction: validationError },
   },
 
   findOne: {
     auth: false,
-    handler: async function (request) {
+    handler: async function (request, h) {
+      console.log("outside try catch find one", request.params.id);
+
       try {
         const user = await db.userStore.getUserById(request.params.id);
+        console.log("Inside find one", user);
         if (!user) {
           return Boom.notFound("No User with this id");
         }
@@ -44,6 +63,11 @@ export const userApi = {
         return Boom.serverUnavailable("No User with this id");
       }
     },
+    tags: ["api"],
+    description: "Get a specific user",
+    notes: "Returns user details",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: userSpecPlus, failAction: validationError },
   },
 
   deleteAll: {
@@ -56,5 +80,8 @@ export const userApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all userApi",
+    notes: "All userApi removed from RestaurantBuddy",
   },
 };

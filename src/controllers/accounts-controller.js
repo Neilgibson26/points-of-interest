@@ -12,6 +12,19 @@ export const accountsController = {
 
   register: {
     auth: false,
+    validate: {
+      payload: userSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h
+          .view("signup-view", {
+            title: "Sign up error",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
     handler: async function (request, h) {
       const user = request.payload;
 

@@ -33,15 +33,10 @@ export const poiApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        const newPoi = db.poiStore.addPoi(request.payload);
-        if (newPoi) {
-          return h.response(user).code(201);
-        }
-        return Boom.serverUnavailable("Database error");
-      } catch (err) {
-        return Boom.serverUnavailable(
-          "User coukld not be created at this time"
-        );
+        const newPoi = await db.poiStore.addPoi(request.payload);
+        return newPoi;
+      } catch {
+        return Boom.serverUnavailable("Database error:");
       }
     },
   },
@@ -50,10 +45,14 @@ export const poiApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        await db.poiStore.deletePoiById(request.params.id);
-        return h.response(user).code(201);
+        const poi = await db.poiStore.getPoiById(request.params.id);
+        if (!poi) {
+          return Boom.notFound("No Poi with this id");
+        }
+        await db.poiStore.deletePoiById(poi._id);
+        return h.response().code(204);
       } catch (err) {
-        return Boom.serverUnavailable("No poi by this ID");
+        return Boom.serverUnavailable("No Playlist with this id");
       }
     },
   },

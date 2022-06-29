@@ -10,6 +10,15 @@ import { apiRoutes } from "./api-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import dotenv from "dotenv";
+import Inert from "@hapi/inert";
+import HapiSwagger from "hapi-swagger";
+
+const swaggerOptions = {
+  info: {
+    title: "Point of interest API",
+    version: "1.0.1",
+  },
+};
 
 const result = dotenv.config();
 if (result.error) {
@@ -49,6 +58,15 @@ async function init() {
     layout: true,
     isCached: false,
   });
+  await server.register(Inert);
+  await server.register([
+    Inert,
+    Vision,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
   db.init("mongo");
   server.route(webRoutes);
   server.route(apiRoutes);

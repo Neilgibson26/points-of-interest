@@ -1,4 +1,5 @@
 import { db } from "../models/db.js";
+import { poiSpec } from "../models/joi-schema.js";
 
 export const poiController = {
   showCreate: {
@@ -8,6 +9,19 @@ export const poiController = {
   },
 
   addPoi: {
+    validate: {
+      payload: poiSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h
+          .view("create-poi", {
+            title: "Create Point of interest error",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const newPoi = {

@@ -1,7 +1,7 @@
 export const serviceUrl = "http://localhost:3000";
 
 export const neil = {
-  firstname: "Neil",
+  firstName: "Neil",
   lastName: "Gibson",
   email: "1neilgibson1@gmail.com",
   password: "neil123",
@@ -23,7 +23,7 @@ export const testUsers = [
     firstName: "James",
     lastName: "Sweeney",
     email: "js@gmail.com",
-    passord: "jimmy",
+    password: "jimmy",
     accountType: "User",
     isAdmin: false,
   },

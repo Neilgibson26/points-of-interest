@@ -2,6 +2,7 @@ import { dashboardController } from "./controllers/dashboard-controller.js";
 import { poiController } from "./controllers/points-of-interest-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { adminController } from "./controllers/admin-controller.js";
+import { poiApi } from "./api/poi-api.js";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: dashboardController.main },
@@ -45,5 +46,11 @@ export const webRoutes = [
     method: "GET",
     path: "/profile",
     config: dashboardController.showProfile,
+  },
+  {
+    method: "GET",
+    path: "/{param*}",
+    handler: { directory: { path: "./public" } },
+    options: { auth: false },
   },
 ];

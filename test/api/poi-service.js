@@ -47,6 +47,6 @@ export const poiService = {
 
   async deletePoi(id) {
     const res = await axios.delete(`${this.poiUrl}/api/poi/${id}`);
-    return res.data;
+    return res;
   },
 };
