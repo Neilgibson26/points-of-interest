@@ -14,6 +14,7 @@ export const userMongoStore = {
   },
 
   async addUser(user) {
+    if (user.accountType === "Admin") user.isAdmin = true;
     const newUser = new User(user);
     const userObj = await newUser.save();
     const u = await this.getUserById(userObj._id);
@@ -38,9 +39,15 @@ export const userMongoStore = {
   },
 
   async updateUser(oldUser, updatedUser) {
+    updatedUser._id = oldUser._id;
+    if (updatedUser.accountType === "Admin") {
+      updatedUser.isAdmin = true;
+    } else {
+      updatedUser.isAdmin = false;
+    }
+
     let doc = await User.findOneAndUpdate({ _id: oldUser._id }, updatedUser, {
       new: true,
     });
-    console.log("This is doc: ", doc);
   },
 };
