@@ -3,7 +3,7 @@ import { db } from "../../src/models/db.js";
 import { testUsers, neil } from "../dummy-data.js";
 import { assertSubset } from "../test-utils.js";
 
-suite("user api tests", () => {
+suite("user model tests", () => {
   setup(async () => {
     db.init("mongo");
     await db.userStore.deleteAll();

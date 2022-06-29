@@ -18,7 +18,6 @@ export const userMongoStore = {
     const newUser = new User(user);
     const userObj = await newUser.save();
     const u = await this.getUserById(userObj._id);
-    console.log(u);
     return u;
   },
 
@@ -50,6 +49,5 @@ export const userMongoStore = {
     let doc = await User.findOneAndUpdate({ _id: oldUser._id }, updatedUser, {
       new: true,
     });
-    console.log("This is doc: ", doc);
   },
 };
