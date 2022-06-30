@@ -1,16 +1,51 @@
 import { db } from "../models/db.js";
-import { userSpec } from "../models/joi-schema.js";
+
+const choices = [
+  { choice: "All" },
+  { choice: "Bar" },
+  { choice: "Pub" },
+  { choice: "Restaurant" },
+  { choice: "Cocktail Bar" },
+  { choice: "Nightclub" },
+];
 
 export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
+      const category = "All";
+
+      let filteredChoices = choices.filter((cat) => cat.choice !== category);
+      console.log("filtered choices are:", filteredChoices);
 
       const allPoi = await db.poiStore.getAllPoi();
-      console.log("all poi is: ", allPoi);
       const data = {
         user: loggedInUser,
         pointsOfInterest: allPoi,
+        choices: filteredChoices,
+        category: category,
+      };
+
+      return h.view("dashboard-view", data);
+    },
+  },
+
+  filteredIndex: {
+    handler: async function (request, h) {
+      console.log();
+      const category = request.payload.category;
+      const loggedInUser = request.auth.credentials;
+      const allPoi = await db.poiStore.getAllPoi();
+
+      let filteredChoices = choices.filter((cat) => cat.choice !== category);
+      let filteredPoi = allPoi.filter((poi) => poi.category === category);
+      console.log("Filtered poi is: ", filteredPoi);
+      console.log("filtered choices are:", filteredChoices);
+      const data = {
+        user: loggedInUser,
+        pointsOfInterest: filteredPoi,
+        category: category,
+        choices: filteredChoices,
       };
 
       return h.view("dashboard-view", data);
@@ -23,16 +58,6 @@ export const dashboardController = {
       return h.view("main");
     },
   },
-
-  // showAbout: {
-  //   handler: async function (request, h) {
-  //     const loggedInUser = request.auth.credentials;
-  //     const data = {
-  //       user: loggedInUser,
-  //     };
-  //     return h.view("about-view", data);
-  //   },
-  // },
 
   showSettings: {
     handler: async function (request, h) {

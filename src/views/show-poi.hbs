@@ -1,0 +1,51 @@
+{{> logged-in}}
+<div class="container bg-light">
+  <div class="d-flex justify-content-center mt-5" style="min-height: 350px;">
+    <div class="card mb-3 shadow border-info" style="width: 70%;">
+      <div class="row g-0">
+        <div class="col-md-5 border-end">
+          <img src={{poi.img}} class="img-fluid rounded-start" alt="..." style="height: 100%; width: 100%"/>
+        </div>
+        <div class="col-md-7" style="height: 100%; ">
+          <div class="col-md d-flex flex-column justify-content-between p-3" style="min-height: 350px">
+            <h5 class="card-title">{{poi.title}}</h5>
+            <p class="card-text">{{poi.description}}</p>
+            <p class="card-text"><small class="text-muted">{{poi.city}},
+                {{poi.country}}</small></p>
+          </div>
+        </div>
+      </div>
+      {{! <div class="card-footer">
+
+        </div> }}
+    </div>
+  </div>
+
+  <div class="card-content bg-white border shadow border-info mt-5">
+    <form
+      action="/poi/uploadimage/{{poi._id}}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div id="file-select" class="file has-name is-fullwidth">
+        <label class="file-label">
+          <input
+            class="file-input"
+            name="imagefile"
+            type="file"
+            name="resume"
+            accept="image/png, image/jpeg"
+          />
+          <span class="file-cta">
+
+            <span class="file-label">
+              Choose a file…
+            </span>
+          </span>
+          <span class="file-name"></span>
+        </label>
+        <button type="submit" class="button is-info">Upload</button>
+      </div>
+    </form>
+  </div>
+</div>

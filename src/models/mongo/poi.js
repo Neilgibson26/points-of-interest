@@ -9,6 +9,7 @@ const poiSchema = new Schema({
   country: String,
   description: String,
   category: String,
+  img: String,
   user_id: {
     type: Schema.Types.ObjectId,
     ref: "User",

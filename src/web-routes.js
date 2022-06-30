@@ -15,6 +15,12 @@ export const webRoutes = [
   { method: "GET", path: "/signup", config: accountsController.showSignup },
   { method: "POST", path: "/register", config: accountsController.register },
   { method: "GET", path: "/dashboard", config: dashboardController.index },
+  {
+    method: "POST",
+    path: "/dashboard",
+    config: dashboardController.filteredIndex,
+  },
+
   // { method: "GET", path: "/about", config: dashboardController.showAbout },
   {
     method: "GET",
@@ -51,5 +57,20 @@ export const webRoutes = [
     path: "/{param*}",
     handler: { directory: { path: "./public" } },
     options: { auth: false },
+  },
+  {
+    method: "GET",
+    path: "/poi/uploadimage/{id}",
+    config: poiController.showAddImage,
+  },
+  {
+    method: "POST",
+    path: "/poi/uploadimage/{id}",
+    config: poiController.uploadImage,
+  },
+  {
+    method: "GET",
+    path: "/poi/{id}",
+    config: poiController.showPoi,
   },
 ];
