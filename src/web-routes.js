@@ -2,7 +2,6 @@ import { dashboardController } from "./controllers/dashboard-controller.js";
 import { poiController } from "./controllers/points-of-interest-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { adminController } from "./controllers/admin-controller.js";
-import { poiApi } from "./api/poi-api.js";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: dashboardController.main },
@@ -16,6 +15,12 @@ export const webRoutes = [
   { method: "GET", path: "/signup", config: accountsController.showSignup },
   { method: "POST", path: "/register", config: accountsController.register },
   { method: "GET", path: "/dashboard", config: dashboardController.index },
+  {
+    method: "POST",
+    path: "/dashboard",
+    config: dashboardController.filteredIndex,
+  },
+
   // { method: "GET", path: "/about", config: dashboardController.showAbout },
   {
     method: "GET",
@@ -52,5 +57,20 @@ export const webRoutes = [
     path: "/{param*}",
     handler: { directory: { path: "./public" } },
     options: { auth: false },
+  },
+  {
+    method: "GET",
+    path: "/poi/uploadimage/{id}",
+    config: poiController.showAddImage,
+  },
+  {
+    method: "POST",
+    path: "/poi/uploadimage/{id}",
+    config: poiController.uploadImage,
+  },
+  {
+    method: "GET",
+    path: "/poi/{id}",
+    config: poiController.showPoi,
   },
 ];

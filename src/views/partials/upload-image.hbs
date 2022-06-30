@@ -1,0 +1,38 @@
+<div class="container mt-5 p-2">
+  <div class="card">
+    {{#if poi.img}}
+      <div class="card-image mx-auto mt-3">
+        <div class="md-5 border-end" style="height: 500px; width: 500px">
+          <img src={{poi.img}} class="img-fluid rounded-start" alt="..." />
+        </div>
+      </div>
+    {{/if}}
+    <div class="card-content">
+      <form
+        action="/poi/uploadimage/{{poi._id}}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div id="file-select" class="file has-name is-fullwidth">
+          <label class="file-label">
+            <input
+              class="file-input"
+              name="imagefile"
+              type="file"
+              name="resume"
+              accept="image/png, image/jpeg"
+            />
+            <span class="file-cta">
+
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+            <span class="file-name"></span>
+          </label>
+          <button type="submit" class="button is-info">Upload</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

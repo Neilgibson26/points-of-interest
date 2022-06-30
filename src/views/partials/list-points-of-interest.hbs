@@ -1,12 +1,17 @@
 {{#each pointsOfInterest}}
-  <div class="d-flex justify-content-center bg-light my-5">
+  <div class="d-flex justify-content-center bg-light my-2">
     <div class="card mb-3 shadow border-info" style="width: 70%;">
       <div class="row g-0">
         <div class="col-md-5 border-end">
-          <img src="..." class="img-fluid rounded-start" alt="..." />
+          <img
+            src={{img}}
+            class="img-fluid rounded-start"
+            alt="..."
+            style="height: 100%; width:100%"
+          />
         </div>
-        <div class="col md-1"></div>
-        <div class="col-md-6">
+
+        <div class="col-md-7">
           <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
             <p class="card-text">{{description}}</p>
@@ -14,6 +19,13 @@
                 {{country}}</small></p>
           </div>
         </div>
+      </div>
+      <div class="card-footer">
+        <div class="col mt-2"><a
+            href="/poi/{{_id}}"
+            class="btn btn-primary"
+            style="width: 100%;"
+          >View Point of interest</a></div>
       </div>
     </div>
   </div>

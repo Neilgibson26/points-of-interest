@@ -1,16 +1,11 @@
-
 {{> logged-in}}
 
-<div class="row align-items-center mt-3 p-5" style="height: 100px;" onclick="goCreate()">
+<div class="bg-light">
 
-
-    <button class="btn btn-outline-info mx-10" type="button">Add Placemark</button>
+    {{> filter-create}}
+    {{> list-points-of-interest}}
 
 </div>
-
-
-
-{{> list-points-of-interest}}
 
 <script>
 function goCreate() { window.location.href = "/create"; }
