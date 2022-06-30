@@ -4,7 +4,11 @@ import { poiSpec } from "../models/joi-schema.js";
 export const poiController = {
   showCreate: {
     handler: async function (request, h) {
-      return h.view("create-poi");
+      const loggedInUser = request.auth.credentials;
+      const data = {
+        user: loggedInUser,
+      };
+      return h.view("create-poi", data);
     },
   },
 
