@@ -4,10 +4,10 @@
     <div class="d-flex flex-column justify-content-center align-items-center shadow border border-info bg-white p-5" style="height: 350px;">
         <h3>
     
-    <small class="text-muted">Are you sure you would like to delete {{user.firstName}} {{user.lastName}}</small>
+    <small class="text-muted">Are you sure you would like to delete {{clickedUser.firstName}} {{clickedUser.lastName}}</small>
     </h3>
     <div class="row">
-        <div class="col"><a href="/delete/yes/{{user._id}}" class="btn btn-primary" style="width: 80px;">Yes</a></div>
+        <div class="col"><a href="/delete/yes/{{clickedUser._id}}" class="btn btn-primary" style="width: 80px;">Yes</a></div>
         <div class="col"><a href="/admin{{_id}}" class="btn btn-primary" style="width: 80px;">No</a></div>
     </div>
     </div>

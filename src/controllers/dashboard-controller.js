@@ -16,7 +16,6 @@ export const dashboardController = {
       const category = "All";
 
       let filteredChoices = choices.filter((cat) => cat.choice !== category);
-      console.log("filtered choices are:", filteredChoices);
 
       const allPoi = await db.poiStore.getAllPoi();
       const data = {
@@ -39,8 +38,6 @@ export const dashboardController = {
 
       let filteredChoices = choices.filter((cat) => cat.choice !== category);
       let filteredPoi = allPoi.filter((poi) => poi.category === category);
-      console.log("Filtered poi is: ", filteredPoi);
-      console.log("filtered choices are:", filteredChoices);
       const data = {
         user: loggedInUser,
         pointsOfInterest: filteredPoi,

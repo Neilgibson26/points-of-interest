@@ -15,15 +15,19 @@ export const poiController = {
 
   showPoi: {
     handler: async function (request, h) {
-      const owner = false;
+      let owner = false;
       const poi = await db.poiStore.getPoiById(request.params.id);
       const loggedInUser = request.auth.credentials;
-      if (loggedInUser._id === poi.user_id) owner = true;
+
+      if (loggedInUser._id.toString() == poi.user_id) {
+        owner = true;
+      }
       const data = {
         poi: poi,
         user: loggedInUser,
         owner: owner,
       };
+      console.log("data is: ", data);
 
       return h.view("show-poi", data);
     },
@@ -55,25 +59,51 @@ export const poiController = {
         category: request.payload.category,
         user_id: loggedInUser._id,
       };
-      console.log(newPoi);
-      await db.poiStore.addPoi(newPoi);
-      return h.redirect("/dashboard");
+
+      const poi = await db.poiStore.addPoi(newPoi);
+      console.log("poi is: ", poi);
+      const data = {
+        user: loggedInUser,
+        poi: poi,
+      };
+      return h.view("add-image", data);
     },
   },
+
+  editPoi: {
+    handler: async function (request, h) {
+      const poi = await db.poiStore.getPoiById(request.params.id);
+      const user = request.auth.credentials;
+      const data = {
+        user: user,
+        poi: poi,
+      };
+      return h.view("edit-poi-view", data);
+    },
+  },
+
   updatePoi: {
     handler: async function (request, h) {
       const updatedPoi = request.payload;
       const oldPoi = await db.poiStore.getPoiById(request.params.id);
-      await db.poiStore.updatePoi(oldPoi, updatedPoi);
+      const returnedUser = await db.poiStore.updatePoi(oldPoi, updatedPoi);
+      console.log("Returned user is: ", returnedUser);
 
-      h.redirect("/dashboard");
+      return h.redirect("/dashboard");
+    },
+  },
+
+  deletePoi: {
+    handler: async function (request, h) {
+      await db.poiStore.deletePoiById(request.params.id);
+
+      return h.redirect("/dashboard");
     },
   },
 
   uploadImage: {
     handler: async function (request, h) {
       const oldPoi = await db.poiStore.getPoiById(request.params.id);
-      console.log("This is the old poi: ", oldPoi);
       try {
         const file = request.payload.imagefile;
         if (Object.keys(file).length > 0) {

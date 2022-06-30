@@ -11,7 +11,7 @@ export const adminController = {
         user: loggedInUser,
         userToBeEdited: clickedUser,
       };
-      return h.view("edit-view", data);
+      return h.view("edit-profile-view", data);
     },
   },
 
@@ -26,9 +26,12 @@ export const adminController = {
 
   showDelete: {
     handler: async function (request, h) {
+      const currUser = request.auth.credentials;
+
       const clickedUser = await db.userStore.getUserById(request.params.id);
       const data = {
-        user: clickedUser,
+        user: currUser,
+        clickedUser: clickedUser,
       };
       return h.view("delete-view", data);
     },

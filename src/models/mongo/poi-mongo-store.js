@@ -23,6 +23,7 @@ export const poiMongoStore = {
   async deletePoiById(id) {
     try {
       await Poi.deleteOne({ _id: id });
+      console.log("Success");
     } catch (error) {
       console.log("bad id");
     }
@@ -34,9 +35,12 @@ export const poiMongoStore = {
 
   async updatePoi(oldPoi, updatedPoi) {
     updatedPoi._id = oldPoi._id;
-    oldPoi.img = updatedPoi.img;
+    updatedPoi.img = oldPoi.img;
+    updatedPoi.user_id = oldPoi.user_id;
+
     let doc = await Poi.findOneAndUpdate({ _id: oldPoi._id }, updatedPoi, {
       new: true,
     });
+    return this.getPoiById(updatedPoi._id);
   },
 };

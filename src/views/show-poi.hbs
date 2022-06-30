@@ -15,37 +15,17 @@
           </div>
         </div>
       </div>
-      {{! <div class="card-footer">
-
-        </div> }}
-    </div>
-  </div>
-
-  <div class="card-content bg-white border shadow border-info mt-5">
-    <form
-      action="/poi/uploadimage/{{poi._id}}"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <div id="file-select" class="file has-name is-fullwidth">
-        <label class="file-label">
-          <input
-            class="file-input"
-            name="imagefile"
-            type="file"
-            name="resume"
-            accept="image/png, image/jpeg"
-          />
-          <span class="file-cta">
-
-            <span class="file-label">
-              Choose a file…
-            </span>
-          </span>
-          <span class="file-name"></span>
-        </label>
-        <button type="submit" class="button is-info">Upload</button>
+      {{#if owner}}
+      <div class="card-footer">
+        <div class="d-flex justify-content-between" style="width: 100%;">
+          <div class="div"></div>
+          <div class="div">
+            <a href="/editpoi/{{poi._id}}" class="btn btn-success" style="width: 80px;">Edit</a>
+            <a href="/deletepoi/{{poi._id}}" class="btn btn-danger" style="width: 80px;">Delete</a>
+          </div>
+        </div>
       </div>
-    </form>
+      {{/if}}
+    </div>
   </div>
 </div>

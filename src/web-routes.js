@@ -37,6 +37,10 @@ export const webRoutes = [
     config: adminController.editProfile,
   },
 
+  { method: "GET", path: "/editpoi/{id}", config: poiController.editPoi },
+  { method: "POST", path: "/updatepoi/{id}", config: poiController.updatePoi },
+  { method: "GET", path: "/deletepoi/{id}", config: poiController.deletePoi },
+
   {
     method: "GET",
     path: "/delete/{id}",
@@ -52,17 +56,12 @@ export const webRoutes = [
     path: "/profile",
     config: dashboardController.showProfile,
   },
-  {
-    method: "GET",
-    path: "/{param*}",
-    handler: { directory: { path: "./public" } },
-    options: { auth: false },
-  },
-  {
-    method: "GET",
-    path: "/poi/uploadimage/{id}",
-    config: poiController.showAddImage,
-  },
+
+  // {
+  //   method: "GET",
+  //   path: "/poi/uploadimage",
+  //   config: poiController.showAddImage,
+  // },
   {
     method: "POST",
     path: "/poi/uploadimage/{id}",
@@ -72,5 +71,11 @@ export const webRoutes = [
     method: "GET",
     path: "/poi/{id}",
     config: poiController.showPoi,
+  },
+  {
+    method: "GET",
+    path: "/{param*}",
+    handler: { directory: { path: "./public" } },
+    options: { auth: false },
   },
 ];

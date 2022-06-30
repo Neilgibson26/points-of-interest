@@ -6,7 +6,7 @@
   <div class="h4 pb-2 mb-2 border-bottom border-info">
 
   </div>
-  <form action="/dashboard/addpoi" method="POST">
+  <form action="/updatepoi/{{poi._id}}" method="POST">
     <div class="field mb-2">
       <label class="label">Category</label>
       <select class="form-control border border-info" name="category">
@@ -23,6 +23,7 @@
         type="text"
         placeholder="eg. Murphy's bar and grill"
         name="title"
+        value="{{poi.title}}"
       />
     </div>
     <div class="row mb-2">
@@ -33,6 +34,7 @@
           type="text"
           placeholder="eg. 22674"
           name="latitude"
+          value="{{poi.latitude}}"
         />
       </div>
 
@@ -44,6 +46,7 @@
           type="text"
           placeholder="eg. -13279"
           name="longitude"
+          value="{{poi.longitude}}"
         />
       </div>
 
@@ -56,6 +59,7 @@
           type="text"
           placeholder="eg. Dublin"
           name="city"
+          value="{{poi.city}}"
         />
       </div>
       <div class="col">
@@ -65,16 +69,28 @@
           type="text"
           placeholder="eg. Ireland"
           name="country"
+          value="{{poi.country}}"
         />
       </div>
     </div>
-    <div class="field mb-2">
+    {{!-- <div class="field mb-2">
       <label class="label">Description</label>
       <textarea
         class="form-control border border-info"
         name="description"
         rows="3"
-      ></textarea>
+        value="{{poi.description}}"
+      ></textarea> --}}
+            <div class="col">
+        <label class="label">Country</label>
+        <input
+          class="input border border-info"
+          type="text"
+          placeholder="eg. Ireland"
+          name="description"
+          value="{{poi.description}}"
+        />
+      </div>
     </div>
 
     <div class="d-flex justify-content-center">
