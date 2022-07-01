@@ -57,11 +57,11 @@ export const webRoutes = [
     config: dashboardController.showProfile,
   },
 
-  // {
-  //   method: "GET",
-  //   path: "/poi/uploadimage",
-  //   config: poiController.showAddImage,
-  // },
+  {
+    method: "GET",
+    path: "/uploadimage/{id}",
+    config: poiController.showAddImage,
+  },
   {
     method: "POST",
     path: "/poi/uploadimage/{id}",

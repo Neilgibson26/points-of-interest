@@ -20,7 +20,8 @@ export const adminController = {
       const updatedUser = request.payload;
       const oldUser = await db.userStore.getUserById(request.params.id);
       await db.userStore.updateUser(oldUser, updatedUser);
-      return h.redirect("/dashboard");
+
+      return h.redirect("/admin");
     },
   },
 

@@ -27,7 +27,6 @@ export const poiController = {
         user: loggedInUser,
         owner: owner,
       };
-      console.log("data is: ", data);
 
       return h.view("show-poi", data);
     },
@@ -61,7 +60,6 @@ export const poiController = {
       };
 
       const poi = await db.poiStore.addPoi(newPoi);
-      console.log("poi is: ", poi);
       const data = {
         user: loggedInUser,
         poi: poi,
@@ -87,9 +85,8 @@ export const poiController = {
       const updatedPoi = request.payload;
       const oldPoi = await db.poiStore.getPoiById(request.params.id);
       const returnedUser = await db.poiStore.updatePoi(oldPoi, updatedPoi);
-      console.log("Returned user is: ", returnedUser);
 
-      return h.redirect("/dashboard");
+      return h.redirect(`/uploadimage/${request.params.id}`);
     },
   },
 

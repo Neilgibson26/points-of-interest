@@ -34,13 +34,22 @@ export const poiMongoStore = {
   },
 
   async updatePoi(oldPoi, updatedPoi) {
+    if (updatedPoi == {} || oldPoi == {}) return null;
+    if (!updatedPoi.hasOwnProperty("title") || !oldPoi.hasOwnProperty("title"))
+      return null;
+
     updatedPoi._id = oldPoi._id;
     updatedPoi.img = oldPoi.img;
     updatedPoi.user_id = oldPoi.user_id;
 
-    let doc = await Poi.findOneAndUpdate({ _id: oldPoi._id }, updatedPoi, {
-      new: true,
-    });
+    try {
+      let doc = await Poi.findOneAndUpdate({ _id: oldPoi._id }, updatedPoi, {
+        new: true,
+      });
+      console.log("Succesfully updated point of interest: ", updatedPoi.title);
+    } catch {
+      console.log("Bad Id somewhere");
+    }
     return this.getPoiById(updatedPoi._id);
   },
 };

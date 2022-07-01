@@ -1,4 +1,5 @@
 export const serviceUrl = "http://localhost:3000";
+export const secondUrl = "http://Neils-MacBook-Air.local:4000";
 
 export const neil = {
   firstName: "Neil",
