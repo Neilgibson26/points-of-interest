@@ -28,7 +28,7 @@ export const accountsController = {
     handler: async function (request, h) {
       const user = request.payload;
 
-      console.log(await db.userStore.addUser(user));
+      await db.userStore.addUser(user);
       return h.redirect("/login");
     },
   },

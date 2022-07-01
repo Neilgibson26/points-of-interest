@@ -58,4 +58,27 @@ suite("user model tests", () => {
     nullUser = await db.userStore.getUserById();
     assert.isNull(nullUser);
   });
+
+  test("Update user -- success!", async () => {
+    await db.userStore.updateUser(testUsers[0], neil);
+    assertSubset(neil, testUsers[0]);
+  });
+  test("Update user -- empty object", async () => {
+    const nullCheckOld = await db.userStore.updateUser(testUsers[0], {});
+    const nullCheckNew = await db.userStore.updateUser(testUsers[0], {});
+
+    assert.isNull(nullCheckOld);
+    assert.isNull(nullCheckNew);
+  });
+
+  test("Update user -- send a number instead of an object", async () => {
+    const nullCheckUpdatedUser = await db.userStore.updateUser(
+      testUsers[0],
+      1234
+    );
+    const nullCheckOldUser = await db.userStore.updateUser(testUsers[0], 1234);
+
+    assert.isNull(nullCheckUpdatedUser);
+    assert.isNull(nullCheckOldUser);
+  });
 });
