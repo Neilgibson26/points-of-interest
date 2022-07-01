@@ -14,6 +14,20 @@ export const poiMongoStore = {
   },
 
   async addPoi(poi) {
+    let current = new Date();
+    current.getFullYear();
+    current.getMonth();
+    current.getDate();
+    current.getHours();
+    current.getMinutes();
+    current.getSeconds();
+
+    const time = current.toLocaleTimeString();
+    const date = current.toLocaleDateString();
+
+    poi.timeCreated = time;
+    poi.dateCreated = date;
+
     const newPoi = new Poi(poi);
     const poiObj = await newPoi.save();
     const u = await this.getPoiById(poiObj._id);
@@ -46,7 +60,6 @@ export const poiMongoStore = {
       let doc = await Poi.findOneAndUpdate({ _id: oldPoi._id }, updatedPoi, {
         new: true,
       });
-      console.log("Succesfully updated point of interest: ", updatedPoi.title);
     } catch {
       console.log("Bad Id somewhere");
     }

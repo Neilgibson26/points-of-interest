@@ -48,6 +48,9 @@ export const poiController = {
     },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
+      const oldUser = await db.userStore.getUserById(loggedInUser._id);
+      const creator = loggedInUser.firstName + " " + loggedInUser.lastName;
+
       const newPoi = {
         title: request.payload.title,
         latitude: request.payload.latitude,
@@ -56,10 +59,16 @@ export const poiController = {
         country: request.payload.country,
         description: request.payload.description,
         category: request.payload.category,
+        creator: creator,
         user_id: loggedInUser._id,
       };
 
       const poi = await db.poiStore.addPoi(newPoi);
+      if (poi) {
+        console.log("successfully created: ", poi);
+        loggedInUser.poiCount = loggedInUser.poiCount + 1;
+        await db.userStore.updateUser(oldUser, loggedInUser);
+      }
       const data = {
         user: loggedInUser,
         poi: poi,

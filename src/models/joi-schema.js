@@ -16,7 +16,10 @@ export const userSpec = userCredentialsSpec
     firstName: Joi.string().example("John").required(),
     lastName: Joi.string().example("Doe").required(),
     accountType: Joi.string().example("User").required(),
-    isAdmin: Joi.boolean().example(false).required(),
+    isAdmin: Joi.boolean().example(false),
+    timeCreated: Joi.string().example("12:00:00"),
+    dateCreated: Joi.string().example("26/07/1999"),
+    poiCount: Joi.number().integer().example(4),
   })
   .label("userDetails");
 
@@ -42,10 +45,14 @@ export const poiSpec = Joi.object()
       )
       .required(),
     category: Joi.string().example("Pub").required(),
-    // _id: IdSpec,
-    // __v: Joi.number(),
   })
   .label("Poi details");
+
+export const poiPlus = Joi.object().keys({
+  _id: IdSpec,
+  user_id: IdSpec,
+  __v: Joi.number(),
+});
 
 export const poiArray = Joi.array().items(poiSpec).label("poiArray");
 

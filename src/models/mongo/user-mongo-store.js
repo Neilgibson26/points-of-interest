@@ -14,6 +14,21 @@ export const userMongoStore = {
   },
 
   async addUser(user) {
+    let current = new Date();
+    current.getFullYear();
+    current.getMonth();
+    current.getDate();
+    current.getHours();
+    current.getMinutes();
+    current.getSeconds();
+
+    const time = current.toLocaleTimeString();
+    const date = current.toLocaleDateString();
+
+    user.timeCreated = time;
+    user.dateCreated = date;
+    user.poiCount = 0;
+
     if (user.accountType === "Admin") user.isAdmin = true;
     const newUser = new User(user);
     const userObj = await newUser.save();
@@ -41,8 +56,8 @@ export const userMongoStore = {
   async updateUser(oldUser, updatedUser) {
     if (updatedUser == {} || oldUser == {}) return null;
     if (
-      !updatedUser.hasOwnProperty("title") ||
-      !oldUser.hasOwnProperty("title")
+      !updatedUser.hasOwnProperty("firstName") ||
+      !oldUser.hasOwnProperty("firstName")
     )
       return null;
 

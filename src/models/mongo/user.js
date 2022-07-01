@@ -7,6 +7,9 @@ const userSchema = new Schema({
   email: String,
   password: String,
   accountType: String,
+  timeCreated: String,
+  dateCreated: String,
+  poiCount: Number,
   isAdmin: Boolean,
 });
 
