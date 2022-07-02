@@ -70,15 +70,4 @@ suite("poi api tests", () => {
     assert.isNull(nullCheckOld);
     assert.isNull(nullCheckNew);
   });
-
-  test("Update poi -- send a number instead of an object", async () => {
-    const nullCheckUpdatedPoi = await db.poiStore.updatePoi(
-      testPoints[0],
-      1234
-    );
-    const nullCheckOldPoi = await db.poiStore.updatePoi(testPoints[0], 1234);
-
-    assert.isNull(nullCheckUpdatedPoi);
-    assert.isNull(nullCheckOldPoi);
-  });
 });

@@ -55,11 +55,6 @@ export const userMongoStore = {
 
   async updateUser(oldUser, updatedUser) {
     if (updatedUser == {} || oldUser == {}) return null;
-    if (
-      !updatedUser.hasOwnProperty("firstName") ||
-      !oldUser.hasOwnProperty("firstName")
-    )
-      return null;
 
     updatedUser._id = oldUser._id;
     if (updatedUser.accountType === "Admin") {

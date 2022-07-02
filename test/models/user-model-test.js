@@ -70,15 +70,4 @@ suite("user model tests", () => {
     assert.isNull(nullCheckOld);
     assert.isNull(nullCheckNew);
   });
-
-  test("Update user -- send a number instead of an object", async () => {
-    const nullCheckUpdatedUser = await db.userStore.updateUser(
-      testUsers[0],
-      1234
-    );
-    const nullCheckOldUser = await db.userStore.updateUser(testUsers[0], 1234);
-
-    assert.isNull(nullCheckUpdatedUser);
-    assert.isNull(nullCheckOldUser);
-  });
 });

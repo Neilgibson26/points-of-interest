@@ -49,8 +49,6 @@ export const poiMongoStore = {
 
   async updatePoi(oldPoi, updatedPoi) {
     if (updatedPoi == {} || oldPoi == {}) return null;
-    if (!updatedPoi.hasOwnProperty("title") || !oldPoi.hasOwnProperty("title"))
-      return null;
 
     updatedPoi._id = oldPoi._id;
     updatedPoi.img = oldPoi.img;
