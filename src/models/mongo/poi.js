@@ -8,6 +8,7 @@ const poiSchema = new Schema({
   city: String,
   country: String,
   description: String,
+  review: String,
   category: String,
   img: String,
   timeCreated: String,

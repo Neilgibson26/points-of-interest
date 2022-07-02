@@ -65,6 +65,8 @@ export const seedData = {
       img: "https://res.cloudinary.com/neilgibson1999/image/upload/v1656594961/effebydur2uflhmtzx1u.jpg",
       timeCreated: "19:34:11",
       dateCreated: "03/09/2021",
+      review:
+        "Food was good but really had to choose carefully because of the incredible prices! starters were from €14 - €19 and then the requirement of having to get a side order on top of the cost of a man course... n o wonder we saw people sharing the pizza, about the cheapest option!",
       creator: "Neil Gibson",
       user_id: "->users.neil",
     },
@@ -80,6 +82,8 @@ export const seedData = {
       img: "https://res.cloudinary.com/neilgibson1999/image/upload/v1656595221/ayu0fcab1rf20ijpvh4k.jpg",
       timeCreated: "07:15:49",
       dateCreated: "25/05/2022",
+      review:
+        "This is the worst music venue I have ever visited. You are treated like rubbish from the minute you arrive, with security worse than any airport visit and utter disrespect from the door staff. DONT GO UNLESS YOU WANT A RUBBISH NIGHT OUT.",
       creator: "Neil Gibson",
       user_id: "->users.neil",
     },
@@ -95,6 +99,8 @@ export const seedData = {
       img: "https://res.cloudinary.com/neilgibson1999/image/upload/v1656595238/f8vikgogl2b58um5vhxi.jpg",
       timeCreated: "16:12:25",
       dateCreated: "01/07/2022",
+      review:
+        "our bouncers are on powertrips.Went out with my sister.We got all dressed up had one drink in Trinity Bar and were told by your bouncers 'Girls I don't think this is your scene,this isn't for use' After we were only in there last month Who is he to judge us and say this place isnt suited???Lovely staff ye have.Pack of clowns",
       creator: "Neil Gibson",
       user_id: "->users.neil",
     },
@@ -110,6 +116,8 @@ export const seedData = {
       img: "https://res.cloudinary.com/neilgibson1999/image/upload/v1656595258/xvcieyl2oyjdxj9hn7xp.jpg",
       timeCreated: "00:00:00",
       dateCreated: "25/06/2022",
+      review:
+        "Wow! Very very lucky to be taken here this week and totally blown away with how good all the food we ordered was. The chicken bites in hot buffalo with roasted garlic dip is worth every penny. Portions are massive so advise not to eat before hand for a while. Service team were all friendly and attentive. What this place lacks in size it more than makes up for in taste.",
       user_id: "->users.mike",
       creator: "Mike Tyson",
     },

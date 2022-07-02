@@ -44,6 +44,11 @@ export const poiSpec = Joi.object()
         "This is a great place for a nice guinness, it also has live music on Mondays and Sundays"
       )
       .required(),
+    review: Joi.string()
+      .example(
+        "Great place fr a pint, atmosphere is amazing! Make sure to try the chicken burger."
+      )
+      .required(),
     category: Joi.string().example("Pub").required(),
   })
   .label("Poi details");

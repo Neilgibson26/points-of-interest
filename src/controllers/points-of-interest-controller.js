@@ -59,6 +59,7 @@ export const poiController = {
         country: request.payload.country,
         description: request.payload.description,
         category: request.payload.category,
+        review: request.payload.review,
         creator: creator,
         user_id: loggedInUser._id,
       };
