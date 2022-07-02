@@ -67,7 +67,7 @@ suite("user model tests", () => {
     const nullCheckOld = await db.userStore.updateUser(testUsers[0], {});
     const nullCheckNew = await db.userStore.updateUser(testUsers[0], {});
 
-    assert.isNull(nullCheckOld);
-    assert.isNull(nullCheckNew);
+    assert.isUndefined(nullCheckOld);
+    assert.isUndefined(nullCheckNew);
   });
 });

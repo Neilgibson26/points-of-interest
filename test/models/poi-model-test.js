@@ -58,16 +58,4 @@ suite("poi api tests", () => {
     allPoints = await db.poiStore.getAllPoi();
     assert.equal(allPoints.length, testPoints.length);
   });
-
-  test("Update poi -- success!", async () => {
-    await db.poiStore.updatePoi(testPoints[0], isabelles);
-    assertSubset(isabelles, testPoints[0]);
-  });
-  test("Update poi -- empty object", async () => {
-    const nullCheckOld = await db.poiStore.updatePoi(testPoints[0], {});
-    const nullCheckNew = await db.poiStore.updatePoi(testPoints[0], {});
-
-    assert.isNull(nullCheckOld);
-    assert.isNull(nullCheckNew);
-  });
 });

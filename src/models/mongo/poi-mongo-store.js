@@ -48,7 +48,7 @@ export const poiMongoStore = {
   },
 
   async updatePoi(oldPoi, updatedPoi) {
-    if (updatedPoi == {} || oldPoi == {}) return null;
+    if (updatedPoi == {} || oldPoi == {}) return undefined;
 
     updatedPoi._id = oldPoi._id;
     updatedPoi.img = oldPoi.img;
@@ -60,6 +60,7 @@ export const poiMongoStore = {
       });
     } catch {
       console.log("Bad Id somewhere");
+      return undefined;
     }
     return this.getPoiById(updatedPoi._id);
   },

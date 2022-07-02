@@ -35,9 +35,12 @@ export const dashboardController = {
       const category = request.payload.category;
       const loggedInUser = request.auth.credentials;
       const allPoi = await db.poiStore.getAllPoi();
+      let filteredPoi = allPoi;
 
       let filteredChoices = choices.filter((cat) => cat.choice !== category);
-      let filteredPoi = allPoi.filter((poi) => poi.category === category);
+      if (category !== "All") {
+        filteredPoi = allPoi.filter((poi) => poi.category === category);
+      }
       const data = {
         user: loggedInUser,
         pointsOfInterest: filteredPoi,
